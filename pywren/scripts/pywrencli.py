@@ -243,7 +243,8 @@ def deploy_lambda(ctx, update_if_exists=True):
                 print("function exists, updating")
                 if update_if_exists:
                     lambclient.update_function_code(FunctionName=FUNCTION_NAME,
-                                                    ZipFile=file_like_object.getvalue())
+                                                    #ZipFile=file_like_object.getvalue())
+                                                    ZipFIle=open('deploy.zip', 'rb').read())
                     return True
                 else:
                     raise Exception() # FIXME will this work?
@@ -255,7 +256,8 @@ def deploy_lambda(ctx, update_if_exists=True):
                                            MemorySize=MEMORY,
                                            Timeout=TIMEOUT,
                                            Role=ROLE,
-                                           Code={'ZipFile' : file_like_object.getvalue()})
+                                           #Code={'ZipFile' : file_like_object.getvalue()})
+                                           Code={'ZipFile' : open('deploy.zip', 'rb').read()})
                 print("Successfully created function.")
                 break
         except botocore.exceptions.ClientError as e:
