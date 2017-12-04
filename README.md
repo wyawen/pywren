@@ -1,12 +1,26 @@
-# PyWren
+# PyWren-RedisLambda 
 
-[![Build Status](https://travis-ci.org/pywren/pywren.svg?branch=master)](https://travis-ci.org/pywren/pywren)
+## Setup pywren 
+```
+git clone https://github.com/wyawen/pywren.git
+cd pywren
+git checkout redis_lambda
+python setupscript.py #all the default settings can be used 
+```
+Add pywren to your PYTHONPATH by adding the following line to ~./bashrc
+```
+export PYTHONPATH="${PYTHONPATH}:/path/to/pywren/pywren" 
+```
 
-> The wrens are mostly small, brownish passerine birds in the mainly New World family Troglodytidae. ... Most wrens are small and rather inconspicuous, except for their loud and often complex songs. - Wikipedia
+## Test for redis-lambda storage backend 
+ 
+1. start EC2 gateway
+2. start RedisLambda server (scripts located in redis_server)
+3. run Pywren RedisLambda client (client benchmarks located in my_test)
 
-PyWren -- it's like a mini condor, in the cloud, for often-complex calls. You can get up to 40 TFLOPS peak from AWS Lambda:
-
-![Benchmark](https://raw.githubusercontent.com/pywren/pywren/master/pywren.gflops.png)
-
-This is the development site. Learn more at [pywren.io](http://pywren.io). 
-
+## Generate data for terasort
+```
+cd my_test 
+# to generate 10 files each with 100 records (each record is 100 bytes) and place them in the folder input_files
+./data_gen.sh 10 100 input_files 
+```
