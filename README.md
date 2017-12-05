@@ -7,9 +7,9 @@ cd pywren
 git checkout redis_lambda
 python setupscript.py #all the default settings can be used 
 ```
-Add pywren to your PYTHONPATH by adding the following line to ~./bashrc
+Add pywren to your PYTHONPATH by adding the following line to ~/.bashrc
 ```
-export PYTHONPATH="${PYTHONPATH}:/path/to/pywren/pywren" 
+export PYTHONPATH="${PYTHONPATH}:/path/to/pywren/" 
 ```
 
 ## Test for redis-lambda storage backend 
